@@ -209,9 +209,56 @@ public class NoticeController {
 
 
         try {
+            String user_id = CmmUtil.nvl((String) session.getAttribute("SESSION_USER_ID")); //아이디
+            String nSeq = CmmUtil.nvl(request.getParameter("nSeq")); //글번호PK
+            String title = CmmUtil.nvl(request.getParameter("title")); //제목
+            String notice_yn = CmmUtil.nvl(request.getParameter("notice_yn")); //공지글 여부
+            String contents = CmmUtil.nvl(request.getParameter("contents")); // 내용
+
+
+            /**
+             * ####################################################################################################
+             * 반드시 값을 받으면 꼭 로그를 찍어 값이 들어오는지 확인 할 것, 반드시 작성할 것
+             * ####################################################################################################
+             */
+
+            log.info("user_id" + user_id);
+            log.info("nSeq" + nSeq);
+            log.info("title" + title);
+            log.info("notice_yn" + notice_yn);
+            log.info("contents" + contents);
+
+
+            /*
+             * 값 전달은 반드시 DTO 객체를 이용해서 처리함 전달 받은 값을 DTO 객체에 넣는다.
+             */
+            NoticeDTO pDTO = new NoticeDTO();
+            pDTO.setUser_id(user_id);
+            pDTO.setNotice_seq(nSeq);
+            pDTO.setTitle(title);
+            pDTO.setNotice_yn(notice_yn);
+            pDTO.setContents(contents);
+
+
+            //게시글 수정하기 DB
+            noticeService.updateNoticeInfo(pDTO);
+
+            msg = "수정되었습니다";
+
+        } catch (Exception e) {
+            msg = "수정에 실패하였습니다. : " + e.getMessage();
+            log.info(e.toString());
+            e.printStackTrace();
+
+        } finally {
+            model.addAttribute("msg" + msg);
+            model.addAttribute("url" + url);
+            log.info(this.getClass().getName() + " .noticeUdate End!");
 
         }
-        }
+
+    return "/redirect";
+    }
 
 
 
