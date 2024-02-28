@@ -27,7 +27,7 @@ public class NoticeController {
 
 
     //RequiredArgsConstructor 를 통해 메모리에 올라간 서비스 객체를 Controller에서 하용할 수 있게 주입함
-    private  final INoticeService noticeService;
+    private final INoticeService noticeService;
 
 
     /**
@@ -196,6 +196,7 @@ public class NoticeController {
 
     }
 
+
     /**
      * 게시판 글 수정 실행 로직
      */
@@ -205,7 +206,7 @@ public class NoticeController {
         log.info(this.getClass().getName() + ".noticeUpdate Start!");
 
         String msg = ""; //메시지 내용
-        String url = "/notice/noticeInfo"; //이동할 경로    }
+        String url = "/notice/noticeInfo"; //이동할 경로
 
 
         try {
@@ -251,8 +252,8 @@ public class NoticeController {
             e.printStackTrace();
 
         } finally {
-            model.addAttribute("msg" + msg);
-            model.addAttribute("url" + url);
+            model.addAttribute("msg", msg);
+            model.addAttribute("url", url);
             log.info(this.getClass().getName() + " .noticeUdate End!");
 
         }

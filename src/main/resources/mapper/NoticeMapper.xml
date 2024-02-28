@@ -21,14 +21,15 @@
             )
         VALUES (
         (SELECT NVL(MAX(A.NOTICE_SEQ),0)+1 FROM NOTICE A),
-        #{title}, #{notice_yn}, #{contents}, #{user_id}, #{read_cnt}, #{reg_id}, SYSDATE(), #{chg_id}, SYSDATE()
+        #{title}, #{notice_yn}, #{contents}, #{user_id}, #{read_cnt}, #{reg_id},
+            SYSDATE(), #{chg_id}, SYSDATE()
        )
     </insert>
 
     <!-- 게시판 상세보기 쿼리 -->
     <select id="getNoticeInfo" resultType="NoticeDTO">
         SELECT NOTICE_SEQ, TITLE, NOTICE_YN, READ_CNT, USER_ID,
-               CONTENTS, TO_CHAR(REG_DT, 'YYYY-MM-DD' AS REG_DT
+               CONTENTS, TO_CHAR(REG_DT, 'YYYY-MM-DD') AS REG_DT
         FROM NOTICE
         WHERE NOTICE_SEQ = #{notice_seq}
     </select>
