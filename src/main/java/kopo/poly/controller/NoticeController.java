@@ -216,7 +216,6 @@ public class NoticeController {
             String notice_yn = CmmUtil.nvl(request.getParameter("notice_yn")); //공지글 여부
             String contents = CmmUtil.nvl(request.getParameter("contents")); // 내용
 
-
             /**
              * ####################################################################################################
              * 반드시 값을 받으면 꼭 로그를 찍어 값이 들어오는지 확인 할 것, 반드시 작성할 것
