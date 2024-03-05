@@ -240,7 +240,6 @@ public class NoticeController {
             pDTO.setContents(contents);
 
 
-            //
             //게시글 수정하기 DB
             noticeService.updateNoticeInfo(pDTO);
 
