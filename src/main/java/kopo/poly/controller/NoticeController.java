@@ -243,6 +243,7 @@ public class NoticeController {
             noticeService.updateNoticeInfo(pDTO);
 
 
+
             msg = "수정되었습니다";
 
         } catch (Exception e) {
