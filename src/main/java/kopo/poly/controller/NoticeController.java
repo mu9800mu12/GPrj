@@ -244,6 +244,7 @@ public class NoticeController {
 
 
 
+
             msg = "수정되었습니다";
 
         } catch (Exception e) {
